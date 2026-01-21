@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shruti Garg | Cybersecurity Professional</title>
+<style>
+:root {
+  --bg-dark: #020617;
+  --bg-card: #020d1f;
+  --bg-card-light: #0f1729;
+  --cyan: #22d3ee;
+  --cyan-dark: #06b6d4;
+  --blue: #38bdf8;
+  --blue-dark: #0284c7;
+  --text: #e5e7eb;
+  --text-light: #d1d5db;
+  --muted: #94a3b8;
+  --accent: #10b981;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #020d1f, #020617 60%);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 4px; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(34,211,238,.15);
+  box-shadow: 0 4px 20px rgba(0,0,0,.3);
+}
+
+nav .container {
+  max-width: 1200px; margin: auto; padding: 1rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.logo {
+  color: var(--cyan); font-weight: 900; letter-spacing: 3px;
+  text-decoration: none; font-size: 1.3rem;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { text-shadow: 0 0 10px rgba(34,211,238,.4); }
+  50% { text-shadow: 0 0 20px rgba(34,211,238,.8); }
+}
+
+nav ul { list-style: none; display: flex; gap: 2.5rem; }
+nav a {
+  color: var(--muted); text-decoration: none; transition: .3s;
+  font-size: .95rem; font-weight: 500;
+  position: relative;
+}
+
+nav a::after {
+  content: ''; position: absolute; bottom: -5px; left: 0;
+  width: 0; height: 2px; background: var(--cyan);
+  transition: width .3s;
+}
+
+nav a:hover { color: var(--cyan); }
+nav a:hover::after { width: 100%; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; position: relative; overflow: hidden; padding: 2rem;
+}
+
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(34,211,238,.1), transparent 70%);
+  animation: scan 8s linear infinite;
+}
+
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at center, rgba(56,189,248,.05), transparent 70%);
+  animation: pulse-bg 4s ease-in-out infinite;
+}
+
+@keyframes scan {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes pulse-bg {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+  font-size: 4rem; color: var(--cyan);
+  animation: glow 2.5s ease-in-out infinite alternate;
+  margin-bottom: .5rem;
+  letter-spacing: -1px;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 15px rgba(34,211,238,.4), 0 0 30px rgba(56,189,248,.2); }
+  to { text-shadow: 0 0 30px rgba(34,211,238,.8), 0 0 50px rgba(56,189,248,.4); }
+}
+
+.hero .subtitle {
+  color: var(--blue); font-size: 1.1rem; margin-bottom: 1rem;
+  font-weight: 600; letter-spacing: 1px;
+}
+
+.hero p {
+  color: var(--muted); font-size: 1.2rem; margin: 1.5rem 0 3rem;
+  max-width: 600px; margin-left: auto; margin-right: auto;
+  line-height: 1.8;
+}
+
+.cta-buttons {
+  display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.btn {
+  padding: .9rem 2.5rem; border-radius: 30px;
+  border: 2px solid var(--cyan);
+  color: var(--cyan); text-decoration: none;
+  transition: .4s; position: relative; overflow: hidden;
+  font-weight: 600; cursor: pointer;
+  background: transparent;
+}
+
+.btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--cyan); transform: scaleX(0);
+  transform-origin: left; transition: .4s; z-index: -1;
+}
+
+.btn:hover::before { transform: scaleX(1); }
+.btn:hover { color: var(--bg-dark); box-shadow: 0 0 20px rgba(34,211,238,.5); }
+
+.btn-secondary {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.btn-secondary::before { background: var(--blue); }
+.btn-secondary:hover { color: var(--bg-dark); }
+
+.scroll-indicator {
+  position: absolute; bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+.scroll-indicator svg {
+  width: 24px; height: 24px; stroke: var(--cyan);
+  stroke-width: 2; fill: none;
+}
+
+/* SECTIONS */
+section {
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34,211,238,.3), transparent);
+}
+
+.container { max-width: 1200px; margin: auto; }
+
+section h2 {
+  text-align: center; font-size: 2.8rem;
+  color: var(--cyan); margin-bottom: 1rem;
+  font-weight: 800; letter-spacing: -1px;
+}
+
+.section-subtitle {
+  text-align: center; color: var(--muted);
+  font-size: 1rem; margin-bottom: 4rem;
+  font-weight: 500;
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem;
+}
+
+.about-text p {
+  color: var(--muted); line-height: 1.9; margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.about-text strong { color: var(--cyan); }
+
+.cyber-stats {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem;
+}
+
+.stat {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-light) 100%);
+  border: 1px solid rgba(34,211,238,.25);
+  padding: 2rem; border-radius: 14px; text-align: center;
+  transition: .4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at top-right, rgba(34,211,238,.1), transparent);
+  pointer-events: none;
+}
+
+.stat:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(34,211,238,.25);
+  border-color: rgba(34,211,238,.5);
+}
+
+.stat h3 {
+  color: var(--cyan); font-size: 2.5rem; margin-bottom: .5rem;
+  font-weight: 800;
+}
+
+.stat span { color: var(--muted); font-size: .95rem; }
+
+/* EXPERIENCE */
+.timeline {
+  position: relative; max-width: 900px; margin: auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(34,211,238,.5), rgba(34,211,238,.1));
+}
+
+.timeline-item {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-light) 100%);
+  width: 45%; padding: 2.5rem;
+  border-radius: 14px;
+  border: 1px solid rgba(34,211,238,.2);
+  position: relative;
+  animation: fadeUp .8s ease forwards;
+  transition: .4s;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.timeline-item:nth-child(1) { animation-delay: .1s; }
+.timeline-item:nth-child(2) { animation-delay: .3s; }
+
+.timeline-item:hover {
+  box-shadow: 0 15px 40px rgba(34,211,238,.2);
+  border-color: rgba(34,211,238,.4);
+  transform: translateY(-5px);
+}
+
+.timeline-item.left { left: 0; }
+.timeline-item.right { left: 55%; }
+
+.timeline-item::before {
+  content: '';
+  width: 16px; height: 16px;
+  background: var(--cyan);
+  border: 3px solid var(--bg-dark);
+  border-radius: 50%;
+  position: absolute; top: 28px; right: -8px;
+  box-shadow: 0 0 15px rgba(34,211,238,.6);
+}
+
+.timeline-item.right::before { left: -8px; }
+
+.timeline-item h3 {
+  color: var(--cyan); margin-bottom: .5rem;
+  font-size: 1.3rem; font-weight: 700;
+}
+
+.timeline-item .company {
+  color: var(--blue); font-weight: 600; margin-bottom: 1rem;
+  font-size: .95rem;
+}
+
+.timeline-item .date {
+  color: var(--muted); font-size: .9rem; margin-bottom: 1rem;
+}
+
+.timeline-item ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.timeline-item li {
+  color: var(--muted); margin-bottom: .8rem;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: .95rem;
+}
+
+.timeline-item li::before {
+  content: '▸';
+  color: var(--cyan);
+  position: absolute; left: 0;
+  font-weight: bold;
+}
+
+/* SKILLS */
+.skills {
+  display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 2rem;
+}
+
+.skill-box {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-light) 100%);
+  border-radius: 14px;
+  padding: 2.5rem; border: 1px solid rgba(34,211,238,.2);
+  transition: .4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-box::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at top-right, rgba(34,211,238,.1), transparent);
+  pointer-events: none;
+}
+
+.skill-box:hover {
+  box-shadow: 0 20px 50px rgba(34,211,238,.3);
+  border-color: rgba(34,211,238,.5);
+  transform: translateY(-8px);
+}
+
+.skill-box h4 {
+  color: var(--cyan); margin-bottom: 1.5rem;
+  font-size: 1.1rem; font-weight: 700;
+}
+
+.skill-box span {
+  display: inline-block; margin: .4rem .3rem .4rem 0;
+  padding: .5rem 1rem;
+  border: 1px solid rgba(34,211,238,.4);
+  border-radius: 25px;
+  font-size: .85rem; color: var(--blue);
+  transition: .3s;
+  background: rgba(34,211,238,.05);
+}
+
+.skill-box span:hover {
+  background: rgba(34,211,238,.15);
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+/* CYBER DOMAINS */
+.domains {
+  display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 2rem;
+}
+
+.domain {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-light) 100%);
+  padding: 2.5rem; border-radius: 14px;
+  border: 1px solid rgba(34,211,238,.2);
+  text-align: center; transition: .4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.domain::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at center, rgba(34,211,238,.1), transparent 70%);
+  opacity: 0;
+  transition: .4s;
+}
+
+.domain:hover::before { opacity: 1; }
+.domain:hover { transform: scale(1.08); box-shadow: 0 20px 50px rgba(34,211,238,.3); }
+
+.domain h4 {
+  color: var(--cyan); margin-bottom: 1rem;
+  font-size: 1.3rem; font-weight: 700;
+  position: relative; z-index: 1;
+}
+
+.domain p {
+  color: var(--muted); font-size: .95rem;
+  position: relative; z-index: 1;
+  line-height: 1.6;
+}
+
+/* PROJECTS */
+.projects-grid {
+  display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 2rem;
+}
+
+.project-card {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-light) 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(34,211,238,.2);
+  overflow: hidden;
+  transition: .4s;
+  position: relative;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--blue), transparent);
+}
+
+.project-card:hover {
+  box-shadow: 0 20px 50px rgba(34,211,238,.3);
+  transform: translateY(-8px);
+  border-color: rgba(34,211,238,.4);
+}
+
+.project-header {
+  background: rgba(34,211,238,.05);
+  padding: 2rem;
+  border-bottom: 1px solid rgba(34,211,238,.15);
+}
+
+.project-header h3 {
+  color: var(--cyan); margin-bottom: .5rem;
+  font-weight: 700; font-size: 1.2rem;
+}
+
+.project-header p {
+  color: var(--blue); font-size: .9rem; margin: 0;
+  font-weight: 600;
+}
+
+.project-body {
+  padding: 2rem;
+}
+
+.project-body p {
+  color: var(--muted); margin-bottom: 1rem;
+  line-height: 1.7; font-size: .95rem;
+}
+
+.project-body strong { color: var(--cyan); }
+
+.project-body ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1.5rem;
+}
+
+.project-body li {
+  color: var(--muted); margin-bottom: .7rem;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: .95rem;
+}
+
+.project-body li::before {
+  content: '✓';
+  color: var(--accent);
+  position: absolute; left: 0;
+  font-weight: bold;
+}
+
+.project-tech {
+  display: flex; flex-wrap: wrap; gap: .6rem;
+}
+
+.tech-tag {
+  background: rgba(34,211,238,.1);
+  color: var(--blue);
+  padding: .4rem .9rem;
+  border-radius: 20px;
+  font-size: .8rem;
+  border: 1px solid rgba(34,211,238,.3);
+  font-weight: 600;
+  transition: .3s;
+}
+
+.tech-tag:hover {
+  background: rgba(34,211,238,.2);
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+/* CERTIFICATIONS */
+.certs-grid {
+  display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1.5rem;
+}
+
+.cert-item {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-light) 100%);
+  padding: 1.5rem; border-radius: 12px;
+  border: 1px solid rgba(34,211,238,.2);
+  text-align: center;
+  transition: .4s;
+}
+
+.cert-item:hover {
+  box-shadow: 0 15px 40px rgba(34,211,238,.2);
+  transform: translateY(-5px);
+}
+
+.cert-item h4 { color: var(--cyan); margin-bottom: .5rem; font-weight: 700; }
+.cert-item p { color: var(--muted); font-size: .9rem; }
+
+/* CONTACT */
+.contact-content {
+  text-align: center; max-width: 700px; margin: auto;
+}
+
+.contact-content p {
+  color: var(--muted); font-size: 1.05rem; margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+.contact-info {
+  display: flex; justify-content: center; gap: 3rem;
+  margin: 2.5rem 0; flex-wrap: wrap;
+}
+
+.contact-item {
+  display: flex; flex-direction: column; align-items: center;
+}
+
+.contact-item strong {
+  color: var(--cyan); margin-bottom: .5rem;
+  font-weight: 700; font-size: 1rem;
+}
+
+.contact-item a {
+  color: var(--blue); text-decoration: none;
+  transition: .3s; font-weight: 600;
+  font-size: 1rem;
+}
+
+.contact-item a:hover {
+  color: var(--cyan);
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  text-align: center; padding: 3rem 2rem;
+  border-top: 1px solid rgba(34,211,238,.15);
+  color: var(--muted);
+  background: rgba(2,6,23,.5);
+}
+
+footer p { margin: 0; font-size: .95rem; }
+
+/* RESPONSIVE */
+@media(max-width: 1024px) {
+  .hero h1 { font-size: 3rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+@media(max-width: 900px) {
+  .timeline::before { left: 8px; }
+  .timeline-item { width: 100%; left: 0; margin-bottom: 2rem; }
+  .timeline-item::before { left: -8px; }
+  nav ul { gap: 1.5rem; font-size: .9rem; }
+}
+
+@media(max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero p { font-size: 1rem; }
+  .cta-buttons { flex-direction: column; }
+  .btn { width: 100%; }
+  section h2 { font-size: 2rem; }
+  .contact-info { gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a class="logo" href="#">SG</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#domains">Domains</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="subtitle">CYBERSECURITY PROFESSIONAL</div>
+    <h1>Shruti Garg</h1>
+    <p>Governance • Risk • Compliance | Threat Detection | Enterprise Security</p>
+    <div class="cta-buttons">
+      <a class="btn" href="#contact">Get In Touch</a>
+      <a class="btn btn-secondary" href="#projects">View Work</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <h2>About Me</h2>
+    <p class="section-subtitle">Cybersecurity professional with expertise in GRC, threat detection, and enterprise security</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a <strong>cybersecurity professional</strong> with a Master's degree in Cybersecurity from National College of Ireland.
+          With hands-on experience across <strong>Governance, Risk, and Compliance (GRC)</strong>, I specialize in implementing
+          security frameworks, managing compliance audits, and reducing organizational risk.
+        </p>
+        <p>
+          My expertise spans <strong>ISO 27001, GDPR, HIPAA, and RBI guidelines</strong>, with practical experience using
+          industry-leading tools like <strong>Symantec DLP, Arcon PIM, and ML-based threat detection systems</strong>.
+          I'm passionate about building secure systems, fostering security culture, and bridging the gap between
+          policy and technology.
+        </p>
+        <p>
+          Currently focused on <strong>enterprise security operations, compliance automation, and threat intelligence</strong>.
+        </p>
+      </div>
+      <div class="cyber-stats">
+        <div class="stat">
+          <h3>2+</h3>
+          <span>Years Security Experience</span>
+        </div>
+        <div class="stat">
+          <h3>MSc</h3>
+          <span>Cybersecurity (2:1)</span>
+        </div>
+        <div class="stat">
+          <h3>5+</h3>
+          <span>Compliance Standards</span>
+        </div>
+        <div class="stat">
+          <h3>100+</h3>
+          <span>Staff Trained</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <h2>Professional Experience</h2>
+    <p class="section-subtitle">GRC, Compliance, and Enterprise Security Operations</p>
+    <div class="timeline">
+      <div class="timeline-item left">
+        <h3>Information Security Officer</h3>
+        <p class="company">Datamatics Global Services Ltd</p>
+        <div class="date">June 2023 - November 2023</div>
+        <ul>
+          <li>Developed and reviewed IT security & compliance policies aligned with GDPR & ISO 27001:2022</li>
+          <li>Conducted Data Protection Impact Assessments (DPIAs) and maintained compliance records</li>
+          <li>Performed risk assessments to identify and mitigate security threats</li>
+          <li>Delivered security awareness training to 100+ employees across departments</li>
+          <li>Established cloud security protocols and data protection frameworks</li>
+          <li>Generated governance reports improving audit readiness</li>
+        </ul>
+      </div>
+      <div class="timeline-item right">
+        <h3>Information Security & Governance Intern</h3>
+        <p class="company">HDB Financial Services</p>
+        <div class="date">December 2022 - May 2023</div>
+        <ul>
+          <li>Coordinated internal audits in compliance with RBI Master Direction for NBFCs</li>
+          <li>Supported information security audits with IT and business teams</li>
+          <li>Reviewed privileged user logs and maintained IS governance reports</li>
+          <li>Utilized Symantec DLP and Arcon PIM tools for access control</li>
+          <li>Documented and tracked IS observations for timely resolution</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <h2>Security Capabilities</h2>
+    <p class="section-subtitle">Technical expertise and professional competencies</p>
+    <div class="skills">
+      <div class="skill-box">
+        <h4>🔐 Governance & Compliance</h4>
+        <span>ISO 27001</span><span>GDPR</span><span>HIPAA</span><span>RBI</span><span>SAMA</span><span>Policy Dev</span>
+      </div>
+      <div class="skill-box">
+        <h4>🛡️ Cyber Defense</h4>
+        <span>IDS/IPS</span><span>DLP</span><span>Threat Modeling</span><span>Incident Response</span><span>SOC Concepts</span>
+      </div>
+      <div class="skill-box">
+        <h4>📊 Risk & Audit</h4>
+        <span>Risk Assessment</span><span>DPIA</span><span>Internal Audits</span><span>Compliance Audits</span><span>Reporting</span>
+      </div>
+      <div class="skill-box">
+        <h4>☁️ Technical Security</h4>
+        <span>Network Security</span><span>Cloud Security</span><span>Data Protection</span><span>ML Security</span>
+      </div>
+      <div class="skill-box">
+        <h4>🔧 Security Tools</h4>
+        <span>Symantec DLP</span><span>Arcon PIM</span><span>SIEM Concepts</span><span>Monitoring Tools</span>
+      </div>
+      <div class="skill-box">
+        <h4>💼 Professional Skills</h4>
+        <span>Problem Solving</span><span>Communication</span><span>Report Writing</span><span>Stakeholder Mgmt</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <h2>Projects & Research</h2>
+    <p class="section-subtitle">Practical implementations and security initiatives</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-header">
+          <h3>ML-Enhanced Intrusion Detection System</h3>
+          <p>Master's Thesis Research</p>
+        </div>
+        <div class="project-body">
+          <p><strong>Objective:</strong> Implement machine learning algorithms to enhance IDS for detecting advanced cyberattacks.</p>
+          <ul>
+            <li>Processed CIC-IDS 2017 dataset with extensive preprocessing</li>
+            <li>Implemented multiple ML models (Logistic Regression, Random Forest, Isolation Forest, One-Class SVM)</li>
+            <li>Designed Ensemble Voting Classifier achieving higher detection accuracy</li>
+            <li>Reduced false positives compared to individual models</li>
+            <li>Detected DDoS, Brute Force, and SQL Injection attacks</li>
+          </ul>
+          <div class="project-tech">
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">IDS</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Data Analysis</span>
+            <span class="tech-tag">Threat Detection</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Compliance & Governance Framework</h3>
+          <p>Enterprise Implementation</p>
+        </div>
+        <div class="project-body">
+          <p><strong>Objective:</strong> Develop comprehensive IT security and compliance policies for multi-national organizations.</p>
+          <ul>
+            <li>Aligned policies with GDPR and ISO 27001:2022 standards</li>
+            <li>Conducted Data Protection Impact Assessments (DPIAs)</li>
+            <li>Maintained compliance records and audit trails</li>
+            <li>Improved audit readiness and documentation</li>
+            <li>Established cloud security and data protection protocols</li>
+          </ul>
+          <div class="project-tech">
+            <span class="tech-tag">ISO 27001</span>
+            <span class="tech-tag">GDPR</span>
+            <span class="tech-tag">Governance</span>
+            <span class="tech-tag">Compliance</span>
+            <span class="tech-tag">Risk Mgmt</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3>Enterprise Security Awareness Program</h3>
+          <p>Employee Training Initiative</p>
+        </div>
+        <div class="project-body">
+          <p><strong>Objective:</strong> Design and deliver comprehensive security awareness training to build organizational security culture.</p>
+          <ul>
+            <li>Trained 100+ employees across multiple departments</li>
+            <li>Created targeted email security awareness campaigns</li>
+            <li>Increased employee engagement and compliance rates</li>
+            <li>Reduced security incidents through education</li>
+            <li>Developed training materials and documentation</li>
+          </ul>
+          <div class="project-tech">
+            <span class="tech-tag">Training</span>
+            <span class="tech-tag">Awareness</span>
+            <span class="tech-tag">Communication</span>
+            <span class="tech-tag">Culture</span>
+            <span class="tech-tag">Engagement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="domains">
+  <div class="container">
+    <h2>Cybersecurity Domains</h2>
+    <p class="section-subtitle">Core areas of expertise and specialization</p>
+    <div class="domains">
+      <div class="domain">
+        <h4>🏛️ GRC</h4>
+        <p>Policy frameworks, risk registers, compliance audits, ISO standards, governance reporting</p>
+      </div>
+      <div class="domain">
+        <h4>🎯 Threat Detection</h4>
+        <p>ML-based IDS, anomaly detection, SOC concepts, incident response, threat intelligence</p>
+      </div>
+      <div class="domain">
+        <h4>🔒 Data Protection</h4>
+        <p>DLP enforcement, encryption, privacy-by-design, DPIA, data classification</p>
+      </div>
+      <div class="domain">
+        <h4>☁️ Cloud Security</h4>
+        <p>Shared responsibility model, access control, cloud audits, security protocols</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2>Let's Connect</h2>
+    <p class="section-subtitle">Open to discussing cybersecurity, compliance challenges, and opportunities</p>
+    <div class="contact-content">
+      <p>I'm always interested in collaborating on security initiatives, compliance projects, and exploring new opportunities in cybersecurity.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <strong>📧 Email</strong>
+          <a href="mailto:shrutigarg2809@gmail.com">shrutigarg2809@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <strong>📱 Phone</strong>
+          <a href="tel:+353874854372">+353 874 854 372</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Shruti Garg | Cybersecurity Professional | GRC & Threat Detection Specialist</p>
+</footer>
+
+</body>
+</html>
